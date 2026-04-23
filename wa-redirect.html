@@ -33,6 +33,20 @@
   a { color: #25D366; }
 </style>
 
+<!-- UTM correction — runs before GA4 so the correct UTM is captured -->
+<script>
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var content = params.get('utm_content');
+    // Only skip redirect if already on a valid new UTM value
+    if (content !== 'WA_Support' && content !== 'WA_Support_QR') {
+      window.location.replace(
+        'https://cityfurnish10.github.io/Delivery-Card-v1/wa-redirect.html?utm_source=Delivery_Card&utm_medium=QR&utm_campaign=DC_Support&utm_content=WA_Support_QR'
+      );
+    }
+  })();
+</script>
+
 <!-- GA4 tracking via gtag.js — uses cityfurnish's GA4 measurement ID -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-05PLBRM6KD"></script>
 <script>
